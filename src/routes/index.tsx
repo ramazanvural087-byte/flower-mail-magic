@@ -6,11 +6,11 @@ import garden from "@/assets/garden-background.png";
 import original from "@/assets/letter-reference.asset.json";
 import envelope from "@/assets/envelope.asset.json";
 import f0 from "@/assets/flower-0.asset.json";
-import f1 from "@/assets/flower-1.asset.json";
+import f1 from "@/assets/exact-daisy.asset.json";
 import f2 from "@/assets/flower-2.asset.json";
 import f3 from "@/assets/flower-3.asset.json";
-import f4 from "@/assets/flower-4.asset.json";
-import f5 from "@/assets/flower-5.asset.json";
+import f4 from "@/assets/exact-plumeria.asset.json";
+import f5 from "@/assets/exact-rose.asset.json";
 import f6 from "@/assets/flower-6.asset.json";
 import f7 from "@/assets/flower-7.asset.json";
 
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
 
 const flowers = [f0, f1, f2, f3, f4, f5, f6, f7];
 const names = ["Lale", "Papatya", "Unutmabeni", "Ayçiçeği", "Zambak", "Gül", "Sarı çiçek", "Lavanta"];
-const slots: Record<number, number> = { 5: 29, 4: 52, 1: 75 };
+const slots: Record<number, number> = { 5: 84 / 290 * 100, 4: 153 / 290 * 100, 1: 222 / 290 * 100 };
 type Drag = { id: number; x: number; y: number; startX: number; startY: number };
 
 function Index() {
@@ -76,7 +76,7 @@ function Index() {
           {placed.map(id => {
             const flower = flowers[id];
             if (!flower) return null;
-            return <div key={id} className="envelope-stamp" style={{ left: `${slots[id]}%` }}><img src={flower.url} alt={names[id]} /></div>;
+            return <div key={id} className="envelope-stamp" style={{ left: `${slots[id]}%`, width: `${(id === 1 ? 57 : 59) / 290 * 100}%` }}><img src={flower.url} alt={names[id]} /></div>;
           })}
         </div>
         {flowers.map((flower, id) => {

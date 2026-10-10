@@ -166,7 +166,7 @@
 .flower-tile.dragging { cursor: grabbing; z-index: 12; transition: none; filter: drop-shadow(var(--letter-shadow)); }
 .flower-tile.placed { pointer-events: none; }
 .flower-tile.placed img { width: 100%; height: 100%; }
-.envelope-stamp { position: absolute; top: 6%; width: 19.5%; height: 46%; }
+.envelope-stamp { position: absolute; top: 3.947%; width: 20.345%; height: 44.737%; }
 .envelope-stamp img { width: 100%; height: 100%; display: block; }
 .replay { position: absolute; right: 2%; bottom: 3%; z-index: 20; color: var(--foreground); background: var(--background); box-shadow: var(--letter-shadow); }
 @keyframes mail-send {
