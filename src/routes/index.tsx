@@ -9,7 +9,7 @@ import f0 from "@/assets/flower-0.asset.json";
 import f1 from "@/assets/flower-1.asset.json";
 import f2 from "@/assets/flower-2.asset.json";
 import f3 from "@/assets/flower-3.asset.json";
-import f4 from "@/assets/flower-4.asset.json";
+import f4 from "@/assets/plumeria-exact.asset.json";
 import f5 from "@/assets/flower-5.asset.json";
 import f6 from "@/assets/flower-6.asset.json";
 import f7 from "@/assets/flower-7.asset.json";
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
     { title: "A letter for you — Çiçekli mektup" },
     { name: "description", content: "Çiçeklerle süslenen ve gül bahçesindeki posta kutusuna gönderilen bir mektup." },
     { property: "og:title", content: "A letter for you — Çiçekli mektup" },
-    { property: "og:description", content: "Gül, zambak ve papatyayla hazırlanan özel bir mektup." },
+    { property: "og:description", content: "Gül, plumeria ve papatyayla hazırlanan özel bir mektup." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 });
 
 const flowers = [f0, f1, f2, f3, f4, f5, f6, f7];
-const names = ["Lale", "Papatya", "Unutmabeni", "Ayçiçeği", "Zambak", "Gül", "Sarı çiçek", "Lavanta"];
+const names = ["Lale", "Papatya", "Unutmabeni", "Ayçiçeği", "Plumeria", "Gül", "Sarı çiçek", "Lavanta"];
 const slots: Record<number, number> = { 5: 29, 4: 52, 1: 75 };
 type Drag = { id: number; x: number; y: number; startX: number; startY: number };
 
@@ -72,7 +72,7 @@ function Index() {
         <img className="garden-backdrop" src={garden} alt="Güller ve lavantalar arasında bir posta kutusu" draggable={false} />
         <img className={`mailbox-layer ${phase === "sent" ? "delivered" : ""}`} src={original.url} alt="" draggable={false} />
         <div className={`envelope ${phase}`} aria-label="Zarf" data-accepted={placed.length}>
-          <img className="envelope-base" src={envelope.url} alt="Gül, zambak ve papatya pullu zarf" draggable={false} />
+          <img className="envelope-base" src={envelope.url} alt="Gül, plumeria ve papatya pullu zarf" draggable={false} />
           {placed.map(id => {
             const flower = flowers[id];
             if (!flower) return null;
