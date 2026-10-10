@@ -142,3 +142,39 @@
     color: var(--color-foreground);
   }
 }
+
+:root {
+  --background: oklch(0.94 0.022 70);
+  --foreground: oklch(0.35 0.045 20);
+  --primary: oklch(0.49 0.12 10);
+  --primary-foreground: oklch(0.98 0.01 70);
+  --ring: oklch(0.63 0.10 10);
+  --letter-shadow: 0 5px 12px oklch(0.3 0.04 20 / 0.22);
+}
+.letter-page { min-height: 100svh; display: grid; place-items: center; overflow: hidden; }
+.garden { width: 100%; max-width: 1600px; aspect-ratio: 1376 / 784; position: relative; isolation: isolate; user-select: none; touch-action: none; }
+.garden-backdrop, .mailbox-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.mailbox-layer { clip-path: inset(12% 43.5% 64% 46.5%); z-index: 2; }
+.mailbox-layer.delivered { animation: mailbox-shake 650ms ease-in-out; }
+.envelope { position: absolute; left: 39.535%; top: 51.276%; width: 21.076%; height: 19.388%; z-index: 3; transform-origin: center; }
+.envelope-base { width: 100%; height: 100%; display: block; filter: drop-shadow(var(--letter-shadow)); }
+.envelope.sending { animation: mail-send 1600ms ease-in-out forwards; }
+.envelope.sent { opacity: 0; pointer-events: none; }
+.flower-tile { position: absolute; width: 4.215%; height: 8.93%; padding: 0; border: 0; border-radius: 0; background: transparent; cursor: grab; touch-action: none; z-index: 5; transition: transform 350ms ease, opacity 200ms ease; height: 8.93%; }
+.flower-tile:hover { background: transparent; }
+.flower-tile img { width: 100%; height: 100%; display: block; pointer-events: none; }
+.flower-tile.dragging { cursor: grabbing; z-index: 12; transition: none; filter: drop-shadow(var(--letter-shadow)); }
+.flower-tile.placed { pointer-events: none; }
+.flower-tile.placed img { width: 100%; height: 100%; }
+.envelope-stamp { position: absolute; top: 6%; width: 19.5%; height: 46%; }
+.envelope-stamp img { width: 100%; height: 100%; display: block; }
+.replay { position: absolute; right: 2%; bottom: 3%; z-index: 20; color: var(--foreground); background: var(--background); box-shadow: var(--letter-shadow); }
+@keyframes mail-send {
+  0%, 18% { transform: translate(0,0) scale(1); opacity: 1; }
+  70% { transform: translate(5%, -154%) scale(0.37); opacity: 1; }
+  88% { transform: translate(5%, -204%) scale(0.30, 0.09); opacity: 1; }
+  100% { transform: translate(5%, -211%) scale(0.29, 0.02); opacity: 0; }
+}
+@keyframes mailbox-shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-2px); } 40%,80% { transform: translateX(2px); } }
+@media (max-width: 600px) { .garden { width: 180%; max-width: none; flex-shrink: 0; } .letter-page { display: flex; justify-content: center; } .replay { right: 24%; } }
+@media (prefers-reduced-motion: reduce) { .envelope.sending { animation-duration: 300ms; } .mailbox-layer.delivered { animation: none; } .flower-tile { transition: none; } }
