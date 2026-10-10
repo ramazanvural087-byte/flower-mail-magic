@@ -73,7 +73,11 @@ function Index() {
         <img className={`mailbox-layer ${phase === "sent" ? "delivered" : ""}`} src={original.url} alt="" draggable={false} />
         <div className={`envelope ${phase}`} aria-label="Zarf" data-accepted={placed.length}>
           <img className="envelope-base" src={envelope.url} alt="Gül, zambak ve papatya pullu zarf" draggable={false} />
-          {placed.map(id => <div key={id} className="envelope-stamp" style={{ left: `${slots[id]}%` }}><img src={flowers[id].url} alt={names[id]} /></div>)}
+          {placed.map(id => {
+            const flower = flowers[id];
+            if (!flower) return null;
+            return <div key={id} className="envelope-stamp" style={{ left: `${slots[id]}%` }}><img src={flower.url} alt={names[id]} /></div>;
+          })}
         </div>
         {flowers.map((flower, id) => {
           const active = drag?.id === id;
